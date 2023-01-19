@@ -26,7 +26,6 @@ namespace СказочнаяСтрана
             int MaximumEnemyDamageTanks = 12;
             int MinEnemyDamageAircraft = 2;
             int MaximumEnemyDamageAircraft = 15;
-
             int minDamageMilitariIntelligence = 0;
             int maximumDamageMilitariIntelligence = 6;
             int MinDamageArtillery = 2;
@@ -35,7 +34,6 @@ namespace СказочнаяСтрана
             int MaximumDamageTanks = 12;
             int MinDamageAircraft = 4;
             int MaximumDamageAircraft = 15;
-
             string userInput;
             int potential = 0;
             int enemyQuantityCombatUnits = 100;
@@ -47,7 +45,8 @@ namespace СказочнаяСтрана
             int permissionAircraft = 23;
             Random random = new Random();
 
-            Console.WriteLine("Добро пожаловать в игру Сказочная страна. Что бы начать игру нажмите \n"+ CommandBringOnTheTroops + "\n" + CommandInformation + "\n" + CommandExit);
+            Console.WriteLine("Добро пожаловать в игру Сказочная страна. Что бы начать игру нажмите " +
+                "\n"+ CommandBringOnTheTroops + "\n" + CommandInformation + "\n" + CommandExit);
             userInput = Console.ReadLine();
 
             switch(userInput)
@@ -56,14 +55,14 @@ namespace СказочнаяСтрана
                     {
                         while (quantityCombatUnits >= 0 && enemyQuantityCombatUnits >= 0)
                         {
-                            Console.WriteLine("В вашем распоряжении есть : \n разведрота (" + CommandMilitariIntelligence + ") \n артиллерия (" + CommandArtillery + ") \n танки (" + CommandTanks + ") " +
+                            Console.WriteLine("В вашем распоряжении есть : \n разведрота (" + CommandMilitariIntelligence + ") " +
+                                "\n артиллерия (" + CommandArtillery + ") \n танки (" + CommandTanks + ") " +
                             "\n самолеты (" + CommandAircraft + ")");
                             userInput = Console.ReadLine();
 
                             switch (userInput)
                             {
                                 case CommandMilitariIntelligence:
-
                                 if (quantityCombatUnits > 0)
                                 {
                                     damage = random.Next(minDamageMilitariIntelligence, maximumDamageMilitariIntelligence);
@@ -71,6 +70,7 @@ namespace СказочнаяСтрана
                                     enemyDamage = random.Next(minEnemyDamageMilitariIntelligence, maximumEnemyDamageMilitariIntelligence);
                                     quantityCombatUnits -= enemyDamage;
                                     enemyQuantityCombatUnits -= damage;
+
                                     if (potential >= permissionArtillery && potential <permissionTanks)
                                     {
                                         Console.WriteLine("Вы произвели разведку территорий врага.Стала доступна Артиллерия. ");
@@ -85,7 +85,8 @@ namespace СказочнаяСтрана
                                     }
                                     else 
                                     {
-                                        Console.WriteLine("Вы произвели разведку территорий врага. Разведки недостаточно для возможности обстрела территории из артиллерии ");
+                                        Console.WriteLine("Вы произвели разведку территорий врага. " +
+                                            "Разведки недостаточно для возможности обстрела территории из артиллерии ");
                                     }  
                                 }
                                 else
@@ -96,7 +97,6 @@ namespace СказочнаяСтрана
                                     break;
 
                                 case CommandArtillery: 
-                                    
                                 if (potential >= permissionArtillery && quantityCombatUnits > 0)
                                 {
                                     damage = random.Next(MinDamageArtillery, MaximumDamageArtillery);
@@ -120,13 +120,13 @@ namespace СказочнаяСтрана
                                 }
                                 else if (potential < permissionArtillery && quantityCombatUnits > 0)
                                 {
-                                    Console.WriteLine("Артиллерия доступна от "+permissionArtillery+" очков потенциала . Необходима разведка. Танки подрываются на минных полях. ПВО противника сбивают наши самолеты. ");
+                                    Console.WriteLine("Артиллерия доступна от "+permissionArtillery+" очков потенциала . " +
+                                        "Необходима разведка. Танки подрываются на минных полях. ПВО противника сбивают наши самолеты. ");
                                 }
                                 Console.WriteLine("Ваш потенциал - " + potential + "Количество армии - " + quantityCombatUnits + " Количество армии врага  - " + enemyQuantityCombatUnits);
                                     break;
 
                                 case CommandTanks:
-
                                     if (potential >= permissionTanks && quantityCombatUnits > 0)
                                     {
                                         damage = random.Next(MinDamageTanks, MaximumDamageTanks);
@@ -146,14 +146,14 @@ namespace СказочнаяСтрана
                                     }
                                     else if (potential < permissionTanks && quantityCombatUnits > 0)
                                     {
-                                        Console.WriteLine("Танки доступны от "+ permissionTanks +" очков потенциала . ПВО противника сбивают наши самолеты и ракеты средней дальности ");
+                                        Console.WriteLine("Танки доступны от "+ permissionTanks +" очков потенциала . " +
+                                            "ПВО противника сбивают наши самолеты и ракеты средней дальности ");
                                     }
 
                                     Console.WriteLine("Ваш потенциал - " + potential + "Количество армии - " + quantityCombatUnits + " Количество армии врага  - " + enemyQuantityCombatUnits);
                                     break;
 
                                 case CommandAircraft:
-
                                     if (potential >= permissionAircraft && quantityCombatUnits > 0)
                                     {
                                         damage = random.Next(MinDamageAircraft, MaximumDamageAircraft);
@@ -165,12 +165,14 @@ namespace СказочнаяСтрана
                                     }
                                     else if (potential < permissionAircraft && quantityCombatUnits > 0)
                                     {
-                                        Console.WriteLine("Авиация доступна от "+ permissionAircraft +" очков потенциала . Необходима разведка , артподгатовка либо ввод танков.. ПВО противника сбивают наши самолеты . ");
+                                        Console.WriteLine("Авиация доступна от "+ permissionAircraft +" очков потенциала . Необходима разведка , " +
+                                            "артподгатовка либо ввод танков.. ПВО противника сбивают наши самолеты . ");
                                     }
                                     Console.WriteLine("Ваш потенциал - " + potential + "Количество армии - " + quantityCombatUnits + " Количество армии врага  - " + enemyQuantityCombatUnits);
                                     break; 
                             }  
                         }
+
                         if (enemyQuantityCombatUnits <= 0)
                         {
                             Console.WriteLine("Вы победили .Количество вашей армии - " + quantityCombatUnits + " Количество армии врага  - " + enemyQuantityCombatUnits);
@@ -180,6 +182,12 @@ namespace СказочнаяСтрана
                         else if (quantityCombatUnits <= 0)
                         {
                             Console.WriteLine("Победа врага.  Ваша армия уничтожена. Количество армии врага  - " + enemyQuantityCombatUnits);
+                            Console.ReadKey();
+                            break;
+                        }
+                        else if (enemyQuantityCombatUnits == 0 && quantityCombatUnits == 0)
+                        {
+                            Console.WriteLine(" Ничья . Количество вашей армии - " + quantityCombatUnits + " Количество армии врага  - " + enemyQuantityCombatUnits);
                             Console.ReadKey();
                             break;
                         }
@@ -198,4 +206,4 @@ namespace СказочнаяСтрана
             }     
         }
     }
-}
+}                
