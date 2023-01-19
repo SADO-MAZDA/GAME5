@@ -18,22 +18,6 @@ namespace СказочнаяСтрана
             const string CommandInformation = "Информация";
             const string CommandExit = "Выход";
 
-            int minEnemyDamageMilitariIntelligence = 0;
-            int maximumEnemyDamageMilitariIntelligence = 9;
-            int MinEnemyDamageArtillery = 2;
-            int MaximumEnemyDamageArtillery = 10;
-            int MinEnemyDamageTanks = 2;
-            int MaximumEnemyDamageTanks = 12;
-            int MinEnemyDamageAircraft = 2;
-            int MaximumEnemyDamageAircraft = 15;
-            int minDamageMilitariIntelligence = 0;
-            int maximumDamageMilitariIntelligence = 6;
-            int MinDamageArtillery = 2;
-            int MaximumDamageArtillery = 11;
-            int MinDamageTanks = 4;
-            int MaximumDamageTanks = 12;
-            int MinDamageAircraft = 4;
-            int MaximumDamageAircraft = 15;
             string userInput;
             int potential = 0;
             int enemyQuantityCombatUnits = 100;
@@ -53,6 +37,23 @@ namespace СказочнаяСтрана
             {
                  case CommandBringOnTheTroops:
                     {
+                        int minEnemyDamageMilitariIntelligence = 0;
+                        int maximumEnemyDamageMilitariIntelligence = 9;
+                        int MinEnemyDamageArtillery = 2;
+                        int MaximumEnemyDamageArtillery = 10;
+                        int MinEnemyDamageTanks = 2;
+                        int MaximumEnemyDamageTanks = 12;
+                        int MinEnemyDamageAircraft = 2;
+                        int MaximumEnemyDamageAircraft = 15;
+                        int minDamageMilitariIntelligence = 0;
+                        int maximumDamageMilitariIntelligence = 6;
+                        int MinDamageArtillery = 2;
+                        int MaximumDamageArtillery = 11;
+                        int MinDamageTanks = 4;
+                        int MaximumDamageTanks = 12;
+                        int MinDamageAircraft = 4;
+                        int MaximumDamageAircraft = 15;
+
                         while (quantityCombatUnits >= 0 && enemyQuantityCombatUnits >= 0)
                         {
                             Console.WriteLine("В вашем распоряжении есть : \n разведрота (" + CommandMilitariIntelligence + ") " +
@@ -169,28 +170,29 @@ namespace СказочнаяСтрана
                                             "артподгатовка либо ввод танков.. ПВО противника сбивают наши самолеты . ");
                                     }
                                     Console.WriteLine("Ваш потенциал - " + potential + "Количество армии - " + quantityCombatUnits + " Количество армии врага  - " + enemyQuantityCombatUnits);
-                                    break; 
+                                    break;
+                                default:
+                                    Console.WriteLine("Команда некорректна.Попробуйте еще раз.");
+                                break;
                             }  
                         }
 
                         if (enemyQuantityCombatUnits <= 0)
                         {
                             Console.WriteLine("Вы победили .Количество вашей армии - " + quantityCombatUnits + " Количество армии врага  - " + enemyQuantityCombatUnits);
-                            Console.ReadKey();
                             break;
                         }
                         else if (quantityCombatUnits <= 0)
                         {
                             Console.WriteLine("Победа врага.  Ваша армия уничтожена. Количество армии врага  - " + enemyQuantityCombatUnits);
-                            Console.ReadKey();
                             break;
                         }
                         else if (enemyQuantityCombatUnits == 0 && quantityCombatUnits == 0)
                         {
                             Console.WriteLine(" Ничья . Количество вашей армии - " + quantityCombatUnits + " Количество армии врага  - " + enemyQuantityCombatUnits);
-                            Console.ReadKey();
                             break;
                         }
+                        Console.ReadKey();
                         break;
                     }
                 case CommandInformation:
@@ -202,8 +204,11 @@ namespace СказочнаяСтрана
                     {
                         Console.WriteLine("До свидания");
                         break;
-                    }                 
+                    }
+                default:
+                    Console.WriteLine("Команда некорректна. Попробуйте еще раз.");
+                    break;
             }     
         }
     }
-}                
+}
