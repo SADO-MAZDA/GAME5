@@ -38,21 +38,21 @@ namespace СказочнаяСтрана
                  case CommandBringOnTheTroops:
                     {
                         int minEnemyDamageMilitariIntelligence = 0;
-                        int maximumEnemyDamageMilitariIntelligence = 9;
-                        int MinEnemyDamageArtillery = 2;
-                        int MaximumEnemyDamageArtillery = 10;
-                        int MinEnemyDamageTanks = 2;
-                        int MaximumEnemyDamageTanks = 12;
-                        int MinEnemyDamageAircraft = 2;
-                        int MaximumEnemyDamageAircraft = 15;
+                        int maxEnemyDamageMilitariIntelligence = 9;
+                        int minEnemyDamageArtillery = 2;
+                        int maxEnemyDamageArtillery = 10;
+                        int minEnemyDamageTanks = 2;
+                        int maxEnemyDamageTanks = 12;
+                        int minEnemyDamageAircraft = 2;
+                        int maxEnemyDamageAircraft = 15;
                         int minDamageMilitariIntelligence = 0;
-                        int maximumDamageMilitariIntelligence = 6;
-                        int MinDamageArtillery = 2;
-                        int MaximumDamageArtillery = 11;
-                        int MinDamageTanks = 4;
-                        int MaximumDamageTanks = 12;
-                        int MinDamageAircraft = 4;
-                        int MaximumDamageAircraft = 15;
+                        int maxDamageMilitariIntelligence = 6;
+                        int minDamageArtillery = 2;
+                        int maxDamageArtillery = 11;
+                        int minDamageTanks = 4;
+                        int maxDamageTanks = 12;
+                        int minDamageAircraft = 4;
+                        int maxDamageAircraft = 15;
 
                         while (quantityCombatUnits >= 0 && enemyQuantityCombatUnits >= 0)
                         {
@@ -66,9 +66,9 @@ namespace СказочнаяСтрана
                                 case CommandMilitariIntelligence:
                                 if (quantityCombatUnits > 0)
                                 {
-                                    damage = random.Next(minDamageMilitariIntelligence, maximumDamageMilitariIntelligence);
+                                    damage = random.Next(minDamageMilitariIntelligence, maxDamageMilitariIntelligence);
                                     potential += damage;
-                                    enemyDamage = random.Next(minEnemyDamageMilitariIntelligence, maximumEnemyDamageMilitariIntelligence);
+                                    enemyDamage = random.Next(minEnemyDamageMilitariIntelligence, maxEnemyDamageMilitariIntelligence);
                                     quantityCombatUnits -= enemyDamage;
                                     enemyQuantityCombatUnits -= damage;
 
@@ -100,9 +100,9 @@ namespace СказочнаяСтрана
                                 case CommandArtillery: 
                                 if (potential >= permissionArtillery && quantityCombatUnits > 0)
                                 {
-                                    damage = random.Next(MinDamageArtillery, MaximumDamageArtillery);
+                                    damage = random.Next(minDamageArtillery, maxDamageArtillery);
                                     potential += damage;
-                                    enemyDamage = random.Next(MinEnemyDamageArtillery, MaximumEnemyDamageArtillery);
+                                    enemyDamage = random.Next(minEnemyDamageArtillery, maxEnemyDamageArtillery);
                                     quantityCombatUnits -= enemyDamage;
                                     enemyQuantityCombatUnits -= damage;
                                     
@@ -130,9 +130,9 @@ namespace СказочнаяСтрана
                                 case CommandTanks:
                                     if (potential >= permissionTanks && quantityCombatUnits > 0)
                                     {
-                                        damage = random.Next(MinDamageTanks, MaximumDamageTanks);
+                                        damage = random.Next(minDamageTanks, maxDamageTanks);
                                         potential += damage;
-                                        enemyDamage = random.Next(MinEnemyDamageTanks, MaximumEnemyDamageTanks);
+                                        enemyDamage = random.Next(minEnemyDamageTanks, maxEnemyDamageTanks);
                                         quantityCombatUnits -= enemyDamage;
                                         enemyQuantityCombatUnits -= damage;
 
@@ -157,9 +157,9 @@ namespace СказочнаяСтрана
                                 case CommandAircraft:
                                     if (potential >= permissionAircraft && quantityCombatUnits > 0)
                                     {
-                                        damage = random.Next(MinDamageAircraft, MaximumDamageAircraft);
+                                        damage = random.Next(minDamageAircraft, maxDamageAircraft);
                                         potential += damage;
-                                        enemyDamage = random.Next(MinEnemyDamageAircraft, MaximumEnemyDamageAircraft);
+                                        enemyDamage = random.Next(minEnemyDamageAircraft, maxEnemyDamageAircraft);
                                         quantityCombatUnits -= enemyDamage;
                                         enemyQuantityCombatUnits -= damage;
                                         Console.WriteLine("Вы уничтожили часть ПВО врага и часть минных полей. Стали доступна авиация.");
@@ -192,6 +192,7 @@ namespace СказочнаяСтрана
                             Console.WriteLine(" Ничья . Количество вашей армии - " + quantityCombatUnits + " Количество армии врага  - " + enemyQuantityCombatUnits);
                             break;
                         }
+
                         Console.ReadKey();
                         break;
                     }
